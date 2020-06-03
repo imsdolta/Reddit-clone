@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-light bg-light">
-      <h4> /r/wanderlust </h4>
+      <h4> /r/{{subreddit}} </h4>
+      <input v-model="subreddit"  type="text" Enter subreddit />
+      <button type="submit" @click="load" class="btn btn-primary">Search</button>
     </nav>
-   
+  <notFound/>
      <li v-for="post in posts" :key="post.id" class="media mt-3">
-      <img class="mr-3" :src="post.data.thumbnail" alt="Generic placeholder image">
-      <div class="media-body">
+      <img class="mr-3" src="post.data.thumbnail" alt="No image">
+      <div class="media-body">  
         <h5 class="mt-0 mb-1"><a :href="createURL(post.data.permalink)" target="_blank">{{post.data.title}}</a></h5>
           <span>
             <h3 class="text-danger"> {{post.data.ups}} ⬆ </h3>
@@ -28,34 +30,43 @@
 </template>
 
 <script>
-import {formatDistance, subDays } from 'date-fns'
+import notFound from './components/notFound';
+import {formatDistance, subDays } from 'date-fns';
 export default {
   name: 'App',
   data(){
     return {
-      posts:[]
+      posts:[],
+      subreddit:''
     };
   },
-  mounted(){
-    this.load();
+  components:{
+    notFound
   },
   methods:{         // All mathods go in this section
+
     load() {
-      const subreddit = 'wanderlust'
-      const url = 'https://www.reddit.com/r/'+subreddit+'/.json';  // Add /.json at end of a subreddit to access json of that page
+      const url = 'https://www.reddit.com/r/'+this.subreddit+'/.json';  // Add /.json at end of a subreddit to access json of that page
+      // rem : Error handling for bad for response except OK 
       fetch(url)
+      .then((response)=>{
+        console.log(response);
+         if (!response.ok) alert("This subreddit does not exists");
+          return response;
+      })
       .then((response)=> response.json())
       .then(result =>{
-        result.data.children.forEach(child=>{
+        console.log(result);
+        result.data.children.forEach(child=>{    
           child.showImage = false;
         })
         this.posts = result.data.children;
      });
     },
-    formatDate(date){
+    formatDate(date){                       //Format date
       return formatDistance(subDays(date*1000,0), new Date());
     },
-    createURL(path){
+    createURL(path){                          // create URL  linking to actual reddit post
       return `https://www.reddit.com${path}`;
     },
     isImage(post){
