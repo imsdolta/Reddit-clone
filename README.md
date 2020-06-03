@@ -1,6 +1,11 @@
-# vue-starter
+# Reddit-clone
+
+## A Vue.js App which emulates the [Reddit](https://www.reddit.com) frontend (mainly subreddits)
+
 
 ## Project setup
+
+make sure you have [node.js](https://nodejs.org) and [vue-cli](https://cli.vue.org) installed before running following commands
 ```
 npm install
 ```
@@ -10,15 +15,10 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
