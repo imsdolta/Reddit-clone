@@ -1,6 +1,7 @@
+<!-- redirect to this page if a subreddit is not founds -->
 <template>
   <div class="notFound">
-    <p> </p> 
+    <p> This Subreddit Does not</p> 
   </div>
 </template>
 
