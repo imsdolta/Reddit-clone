@@ -5,7 +5,7 @@
       <input v-model="subreddit"  type="text" Enter subreddit />
       <button type="submit" @click="load" class="btn btn-primary">Search</button>
     </nav>
-  <notFound/>
+
      <li v-for="post in posts" :key="post.id" class="media mt-3">
       <img class="mr-3" src="post.data.thumbnail" alt="No image">
       <div class="media-body">  
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import notFound from './components/notFound';
+
 import {formatDistance, subDays } from 'date-fns';
 export default {
   name: 'App',
@@ -39,9 +39,6 @@ export default {
       posts:[],
       subreddit:''
     };
-  },
-  components:{
-    notFound
   },
   methods:{         // All mathods go in this section
 
