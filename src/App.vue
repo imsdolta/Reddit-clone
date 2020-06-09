@@ -40,8 +40,8 @@ export default {
       subreddit:''
     };
   },
-  methods:{         // All mathods go in this section
 
+  methods:{         // All mathods go in this section
     load() {
       const url = 'https://www.reddit.com/r/'+this.subreddit+'/.json';  // Add /.json at end of a subreddit to access json of that page
       // rem : Error handling for bad for response except OK 

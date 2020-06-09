@@ -10,7 +10,8 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "date-fns": "^2.14.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "websocket-extensions": "^0.1.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
